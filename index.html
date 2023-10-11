@@ -1,0 +1,45 @@
+<html>
+
+<head>
+	<title>Encryption</title>
+</head>
+
+<body>
+	<h1>Encryption</h1>
+
+	<div>
+		<div>
+			<label>Key: </label>
+			<input id="keyElm" type="password" placeholder="Enter Key">
+		</div>
+		<br>
+		<div>
+			<textarea id="textElm" placeholder="Enter text" style="width:250px; height: 150px"></textarea>
+			<button onclick="encrypt()">Encrypt</button>
+		</div>
+		<br>
+		<div>
+			<textarea id="encryptedElm" placeholder="Enter encrypted" style="width:250px; height: 150px"></textarea>
+			<button onclick="decrypt()">Decrypt</button>
+		</div>
+	</div>
+	<script src="./crypt.js"></script>
+	<script>
+		const keyElm = document.getElementById("keyElm")
+		const textElm = document.getElementById("textElm")
+		const encryptedElm = document.getElementById("encryptedElm")
+
+		function encrypt(){
+			const encryptedAES = CryptoJS.AES.encrypt(textElm.value, keyElm.value).toString();
+			console.log(encryptedAES)
+		}
+
+		function decrypt(){
+			const decryptedBytes = CryptoJS.AES.decrypt(encryptedElm.value, keyElm.value);
+			var plaintext = decryptedBytes.toString(CryptoJS.enc.Utf8);
+			console.log(plaintext)
+		}
+	</script>
+</body>
+
+</html>
