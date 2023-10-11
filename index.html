@@ -31,13 +31,13 @@
 
 		function encrypt(){
 			const encryptedAES = CryptoJS.AES.encrypt(textElm.value, keyElm.value).toString();
-			console.log(encryptedAES)
+			encryptedElm.value = encryptedAES;
 		}
 
 		function decrypt(){
 			const decryptedBytes = CryptoJS.AES.decrypt(encryptedElm.value, keyElm.value);
-			var plaintext = decryptedBytes.toString(CryptoJS.enc.Utf8);
-			console.log(plaintext)
+			const plaintext = decryptedBytes.toString(CryptoJS.enc.Utf8);
+			textElm.value = plaintext;
 		}
 	</script>
 </body>
